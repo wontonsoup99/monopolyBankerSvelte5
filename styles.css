@@ -1,0 +1,60 @@
+body {
+  font-family: Impact, sans-serif;
+  height: 100vh;
+  padding: 10px;
+  /*
+* Created with https://www.css-gradient.com
+* Gradient link: https://www.css-gradient.com/?c1=be1743&c2=3b297a&gt=r&gd=dtl
+*/
+  background: #be1743;
+  background: radial-gradient(at left top, #be1743, #3b297a);
+}
+.playerCardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 80vh;
+}
+.playerCard {
+  min-width: 100px;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 20px;
+  color: black;
+  background-color: lightgrey;
+  display: grid;
+  width: calc(33% - 44px);
+  height: 300px;
+  box-shadow: 10px 20px 10px 0px rgba(0, 0, 0, 0.297);
+}
+.playerBalance {
+  align-self: end;
+  color: darkgreen;
+}
+.playerTitle {
+  align-self: start;
+}
+.header {
+  display: block;
+  background-color: lightgrey;
+  border: 4px solid black;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 10px 20px 10px 0px rgba(0, 0, 0, 0.297);
+  width: 60%;
+  min-width: 400px;
+}
+header {
+  justify-items: center;
+}
+
+.bankContainer {
+  margin-top: 20px;
+  width: 100%;
+  background-color: lightgrey;
+  text-align: center;
+  border: 4px solid black;
+  border-radius: 20px;
+}
