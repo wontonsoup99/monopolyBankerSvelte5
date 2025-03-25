@@ -29,6 +29,12 @@ body {
   height: 300px;
   box-shadow: 10px 20px 10px 0px rgba(0, 0, 0, 0.297);
 }
+.playerCard:hover,
+.bankContainer:hover {
+  background-color: grey;
+  transform: scale(1.04);
+  transition: 0.5s;
+}
 .playerBalance {
   align-self: end;
   color: darkgreen;
