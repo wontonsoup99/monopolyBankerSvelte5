@@ -5,7 +5,14 @@
 
 	// Function to add a new card
 	function addCard(playerName: string) {
-		cards = [...cards, {playerName: playerName, money: startingMoney }]; // Add a new card with a player name and starting money
+		if (cards.some(card => card.playerName === playerName)) {
+			alert("Player already exists!"); // Alert if player already exists
+			return;
+		}
+		else {
+			cards = [...cards, {playerName: playerName, money: startingMoney }]; // Add a new card with a player name and starting money
+		}
+		
 	}
 	function removeCard(playerName: string) {
 		
