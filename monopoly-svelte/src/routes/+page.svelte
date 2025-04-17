@@ -1,13 +1,11 @@
 <script lang="ts">
-	let cards: { id: number; playerName: string; money: number; }[] = []; // Array to store card data
-	let cardId = 1; // Unique ID for each card
+	let cards: {playerName: string; money: number; }[] = []; // Array to store card data
 	let playerName = ""; // Variable to hold player name
 	let startingMoney = 1500; // Starting money for each player
 
 	// Function to add a new card
 	function addCard(playerName: string) {
-		cards = [...cards, { id: cardId, playerName: playerName, money: startingMoney }]; // Add a new card with a unique ID
-		cardId++; // Increment the card ID for the next card
+		cards = [...cards, {playerName: playerName, money: startingMoney }]; // Add a new card with a player name and starting money
 	}
 	function removeCard(playerName: string) {
 		
@@ -38,7 +36,7 @@
 
 	<div class="cardContainer">
 		<!-- Render cards dynamically -->
-		{#each cards as card (card.id)}
+		{#each cards as card (card.playerName)}
 			<div class="card">
 				<h3 class="playerName">{card.playerName}</h3>
 				<h4 class="playerMoney">${card.money}</h4>
