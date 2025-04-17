@@ -1,15 +1,20 @@
 <script lang="ts">
-	let cards: { id: number; playerName: string }[] = []; // Array to store card data
+	let cards: { id: number; playerName: string; money: number; }[] = []; // Array to store card data
 	let cardId = 1; // Unique ID for each card
+	let playerName = ""; // Variable to hold player name
+	let startingMoney = 1500; // Starting money for each player
 
 	// Function to add a new card
-	function addCard() {
-		cards = [...cards, { id: cardId, playerName: `Player ${cardId}` }]; // Add a new card with a unique ID
+	function addCard(playerName: string) {
+		cards = [...cards, { id: cardId, playerName: playerName, money: startingMoney }]; // Add a new card with a unique ID
 		cardId++; // Increment the card ID for the next card
 	}
-	function playerRemove() {
-		cards = cards.filter((card) => card.id !== cardId); // Remove the card with the specified ID
+	function removeCard(playerName: string) {
+		
+		cards = cards.filter(card => card.playerName !== playerName); // Remove the card with the specified player name
+		
 	}
+
 </script>
 
 <svelte:head>
@@ -24,14 +29,20 @@
 	</div>
 
 	<!-- Button to add a new card -->
-	<button on:click={addCard} class="addCardButton">Add Card</button>
+	 <form>
+		<input type="text" bind:value={playerName} placeholder="Enter player name" />
+		<button on:click={() => addCard(playerName)} class="addCardButton">Add Card</button>
+		
+	 </form>
+	
 
 	<div class="cardContainer">
 		<!-- Render cards dynamically -->
 		{#each cards as card (card.id)}
 			<div class="card">
-				<h3>{card.playerName}</h3>
-				<button on:click={playerRemove} class="playerRemove"><h3>X</h3></button>
+				<h3 class="playerName">{card.playerName}</h3>
+				<h4 class="playerMoney">${card.money}</h4>
+				<button on:click={() => removeCard(card.playerName)}><div class="removePlayer"><p>X</p></div></button>
 			</div>
 		{/each}
 	</div>
@@ -99,12 +110,18 @@ border-radius: 5px;
         cursor: pointer;
         font-size: 16px;
     }
-.playerRemove {
-	height: 10px;
-	width: 10px;
-		margin: 20px;
-		padding: 10px 20px;
-		background-color: #ff0000;}
+.removePlayer {
+		text-align: center;
+		margin-bottom: 0;
+		color: white;
+		text-align: center;
+		font-size: 20px;
+		width: 40px;
+		height: 40px;
+		background-color: red;
+		border-radius: 6px;
+	}
+
 
     .addCardButton:hover {
    	 background-color: #0056b3;
@@ -114,5 +131,19 @@ border-radius: 5px;
         text-align: center;
 		margin-top: 20px;
         color: white;
+	}
+
+	.playerName {
+		text-align: center;
+		margin-top: 20px;
+		color: white;
+		font-weight: bold;
+		font-size: 2rem;
+	}
+	.playerMoney {
+		text-align: center;
+		margin-top: 20px;
+		color: white;
+		font-weight: 800;
 	}
 </style>
