@@ -5,7 +5,7 @@
 
 	// Function to add a new card
 	function addCard(playerName: string) {
-		if (cards.some((card) => card.playerName === playerName)) {
+		if (cards.some((card) => card.playerName.toLowerCase() === playerName.toLowerCase())) {
 			alert('Player already exists!'); // Alert if player already exists
 		} else if (playerName === '') {
 			alert('Please enter a player name!'); // Alert if player name is empty
