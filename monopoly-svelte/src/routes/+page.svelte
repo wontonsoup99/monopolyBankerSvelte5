@@ -10,6 +10,7 @@
 		} else if (playerName === '') {
 			alert('Please enter a player name!'); // Alert if player name is empty
 		} else {
+			playerName = playerName.charAt(0).toUpperCase() + playerName.slice(1); // Capitalize the first letter of the player name
 			cards = [...cards, { playerName: playerName, money: startingMoney }]; // Add a new card with a player name and starting money
 		}
 	}
@@ -142,9 +143,7 @@
 	.removePlayer:hover {
 		background-color: rgb(133, 14, 14);
 		transform: scale(1.1);
-
 	}
-
 
 	.card h3 {
 		text-align: center;
@@ -167,7 +166,6 @@
 		color: white;
 		font-weight: bold;
 		font-size: 2rem;
-		
 	}
 	.playerMoney {
 		grid-column: 2/3;
@@ -179,7 +177,6 @@
 		margin-top: auto;
 		margin-bottom: 6px;
 		font-size: 2rem;
-		color: rgb(98, 255, 98)
+		color: rgb(98, 255, 98);
 	}
-
 </style>
