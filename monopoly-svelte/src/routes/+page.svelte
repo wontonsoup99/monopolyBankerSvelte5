@@ -31,7 +31,7 @@
 	</div>
 
 	<!-- Button to add a new card -->
-	<form>
+	<form class="nameField">
 		<input type="text" bind:value={playerName} placeholder="Enter player name" />
 		<button on:click={() => addCard(playerName)} class="addCardButton">Add Card</button>
 	</form>
@@ -178,5 +178,13 @@
 		margin-bottom: 6px;
 		font-size: 2rem;
 		color: rgb(98, 255, 98);
+	}
+	.nameField {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		width: 100%;
+		height: 100%;
 	}
 </style>
