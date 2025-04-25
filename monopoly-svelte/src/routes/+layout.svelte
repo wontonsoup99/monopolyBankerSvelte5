@@ -27,5 +27,6 @@
 		width: 100%;
 		margin: 0 auto;
 		box-sizing: border-box;
+		background-color: rgb(228, 228, 228);
 	}
 </style>
