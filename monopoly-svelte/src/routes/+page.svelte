@@ -26,27 +26,16 @@
 	{#each cards as card (card.playerName)}
 		<div class="card">
 			<h3 class="playerName">{card.playerName}</h3>
-				<h4 class="playerMoney">${card.money}</h4>
-					<button on:click={() => removeCard(card.playerName)} class="removePlayer">
-						<div><p>X</p></div></button
+			<h4 class="playerMoney">${card.money}</h4>
+			<button on:click={() => removeCard(card.playerName)} class="removePlayer">
+				<div><p>X</p></div></button
 			>
 		</div>
 	{/each}
 
 	<!-- Button to add a new card -->
-	<div class="addCardButtonFlex">
 		<button on:click={() => addCard(playerName)} class="addCardButton">+</button>
-	</div>
 </section>
-
-
-
-
-
-
-
-
-
 
 <!--style section-->
 <style>
@@ -60,6 +49,7 @@
 		width: 100vw;
 		min-width: 400px;
 		background-color: rgb(228, 228, 228);
+		padding-bottom: 200px;
 	}
 
 	.headerWrapper {
@@ -101,23 +91,14 @@
 		box-shadow: inset -8px -8px rgba(49, 42, 42, 0.3);
 	}
 
-	/* Add styles for the button */
-	.addCardButtonFlex {
-		display: flex;
-		justify-content: right;
-		align-items: center;
-		width: 100%;
-		min-width: 380px;
-		height: 100px;
-		margin: 16px 20% 0 0;
-	}
 	.addCardButton {
-		position: relative;
+		position: fixed;
 		right: 0;
+		bottom: 0;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin: 20px;
+		margin: 40px;
 		width: 70px;
 		height: 70px;
 		background-color: #007bff;
