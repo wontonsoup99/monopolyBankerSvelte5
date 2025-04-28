@@ -34,7 +34,7 @@
 	{/each}
 
 	<!-- Button to add a new card -->
-		<button on:click={() => addCard(playerName)} class="addCardButton">+</button>
+	<button on:click={() => addCard(playerName)} class="addCardButton">+</button>
 </section>
 
 <!--style section-->
@@ -54,8 +54,8 @@
 
 	.headerWrapper {
 		display: flex;
-		align-items: center;
-		height: 100px;
+		align-items: flex-end;
+		height: 150px;
 		width: 100%;
 		background-color: rgb(20, 85, 179);
 		padding: 6px;
@@ -70,9 +70,7 @@
 
 	.header {
 		color: #fff;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		margin-bottom: 32px;
 		font-weight: 600;
 		text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 	}
