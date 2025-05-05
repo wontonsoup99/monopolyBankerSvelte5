@@ -24,7 +24,7 @@
 			/>
 		</div>
 	</Card.Content>
-	<Card.Footer class="flex gap-1 p-0">
+	<Card.Footer class="flex gap-2 p-0">
 		<Button class="flex-1 text-base font-semibold" variant="outline">Cancel</Button>
 		<Button class="flex-1 text-base font-semibold" variant="submit"><Save />Save</Button>
 	</Card.Footer>

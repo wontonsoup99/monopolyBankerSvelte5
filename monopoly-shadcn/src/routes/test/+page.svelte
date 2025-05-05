@@ -4,6 +4,8 @@
 	import { DollarSign } from '@lucide/svelte';
 	import { Save } from '@lucide/svelte';
 	import SetStartMoneyPopup from '$lib/components/popups/setStartMoneyPopup/setStartMoneyPopup.svelte';
+    import AddPlayerPopup from '$lib/components/popups/addPlayerPopup/addPlayerPopup.svelte';
 </script>
 
 <SetStartMoneyPopup />
+<AddPlayerPopup />
