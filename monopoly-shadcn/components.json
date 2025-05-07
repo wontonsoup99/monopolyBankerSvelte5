@@ -13,6 +13,5 @@
 		"hooks": "$lib/hooks"
 	},
 	"typescript": true,
-	"registry": "https://next.shadcn-svelte.com/registry",	
-  	"iconLibrary": "lucide"
+	"registry": "https://next.shadcn-svelte.com/registry"
 }
