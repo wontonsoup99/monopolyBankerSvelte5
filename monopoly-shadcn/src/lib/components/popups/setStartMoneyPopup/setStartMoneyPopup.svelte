@@ -5,14 +5,14 @@
 	import { Save } from '@lucide/svelte';
 </script>
 
-<Card.Root class="w-[340px] p-4">
+<Card.Root class="w-[320px] p-4 mx-auto">
 	<Card.Header class="flex flex-col gap-1 p-0">
 		<Card.Title class="m-0 text-lg">Set Starting Money</Card.Title>
 		<Card.Description class="text-sm text-muted-foreground">
 			<p class="p-0">This will be the starting money that every player will receive.</p>
 		</Card.Description>
 	</Card.Header>
-	<Card.Content class="grid gap-4 pb-4 pl-0 pr-0 pt-4">
+	<Card.Content class="grid gap-4 py-4 px-0">
 		<div class="flex-1 space-y-0">
 			<label for="startMoney" class="text-base font-medium text-foreground">Starting Amount</label>
 			<div class="size-0"><DollarSign class="relative left-2 top-3 size-4" /></div>

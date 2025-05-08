@@ -4,7 +4,7 @@
 	import { TriangleAlert } from 'lucide-svelte';
 </script>
 
-<Card.Root class="flex-1 w-[320px] h-[244px] rounded-lg">
+<Card.Root class="flex-1 w-[320px] h-[244px] rounded-lg mx-auto">
 	<Card.Header class="flex-row justify-items-start bg-destructive text-white p-4 gap-2 rounded-t-lg">
 		<TriangleAlert />
 		<Card.Title class=""><h2>Restart Game?</h2></Card.Title>

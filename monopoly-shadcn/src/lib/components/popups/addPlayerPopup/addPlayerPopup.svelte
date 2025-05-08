@@ -2,9 +2,16 @@
 	import { Button } from '$lib/components/ui/button/index.js';
 	import * as Card from '$lib/components/ui/card/index.js';
 	import { CirclePlus } from '@lucide/svelte';
+
+
+
+  
+	function addPlayer() {
+	
+	}
 </script>
 
-<Card.Root class="w-[340px] p-4">
+<Card.Root class="w-[320px] p-4 mx-auto">
 	<Card.Header class="p-0 ">
 		<Card.Title class="mb-4 text-lg">Add New Player</Card.Title>
 	</Card.Header>
@@ -21,6 +28,6 @@
 	</Card.Content>
 	<Card.Footer class="flex gap-2 p-0 pt-4 ">
 		<Button class="flex-1" variant="outline">Cancel</Button>
-		<Button class="flex-1" variant="submit"><CirclePlus /> Add Player</Button>
+		<Button on:click={addPlayer} class="flex-1" variant="submit"><CirclePlus /> Add Player</Button>
 	</Card.Footer>
 </Card.Root>

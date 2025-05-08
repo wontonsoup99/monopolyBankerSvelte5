@@ -51,10 +51,13 @@
 		children,
 		...restProps
 	}: ButtonProps = $props();
+
+	import { createEventDispatcher } from 'svelte';
+	const dispatch = createEventDispatcher();
 </script>
 
 {#if href}
-	<a bind:this={ref} class={cn(buttonVariants({ variant, size }), className)} {href} {...restProps}>
+	<a bind:this={ref} class={cn(buttonVariants({ variant, size }), className)} {href} {...restProps} on:click={(e) => dispatch('click', e)}>
 		{@render children?.()}
 	</a>
 {:else}
@@ -63,6 +66,7 @@
 		class={cn(buttonVariants({ variant, size }), className)}
 		{type}
 		{...restProps}
+		on:click={(e) => dispatch('click', e)}
 	>
 		{@render children?.()}
 	</button>
