@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button/index.js';
 	import * as Card from '$lib/components/ui/card/index.js';
+	import { TriangleAlert } from 'lucide-svelte';
 	import * as Select from '$lib/components/ui/select/index.js';
 </script>
 
 <Card.Root class=" flex-1 gap-4 p-4 w-[320px]  rounded-lg">
 		<h3 class="text-lg font-semibold">Remove Player?</h3>
 		<div class="pt-4 pb-4">
-		<label for="player-select">Player</label>
+		<p class="pb-1 font-normal text-gray-700">Player</p>
 		<Select.Root type="single" name="player-select">
 			<Select.Trigger>Select player</Select.Trigger>
 			<Select.Content>
