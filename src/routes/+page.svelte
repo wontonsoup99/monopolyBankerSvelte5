@@ -14,8 +14,8 @@
 <RestartGamePopup />
 <RemovePlayerPopup />
 <PlayerCard /> -->
-<div class="bg-grey h-screen w-screen justify-items-center bg-slate-400">
-	<header class=" flex h-auto w-full flex-row items-center justify-evenly bg-slate-50 p-0 pt-11">
+<div class="bg-grey justify-items-cente h-screen w-screen bg-[#FAF5EA]">
+	<header class=" flex h-auto w-full flex-row items-center justify-evenly p-0 pt-11">
 		<MenuDropdown />
 		<MonopolyMan />
 		<Die />
