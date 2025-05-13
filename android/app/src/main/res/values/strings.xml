@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">monopoly banker</string>
+    <string name="title_activity_main">monopoly banker</string>
+    <string name="package_name">com.monopolybanker.app</string>
+    <string name="custom_url_scheme">com.monopolybanker.app</string>
+</resources>
