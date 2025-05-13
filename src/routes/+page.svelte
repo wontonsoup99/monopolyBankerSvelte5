@@ -7,3 +7,4 @@
 		<h2 class="text-center">$1,500</h2>
 		<h3 class="text-center">[Name]</h3>
 </Card.Root>
+
