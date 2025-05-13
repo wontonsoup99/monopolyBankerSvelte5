@@ -14,13 +14,13 @@
 <RestartGamePopup />
 <RemovePlayerPopup />
 <PlayerCard /> -->
-<div class="bg-grey h-screen w-screen bg-slate-400">
-	<header class=" flex h-auto flex-row items-center justify-evenly bg-slate-50 p-0 pt-11">
+<div class="bg-grey h-screen w-screen justify-items-center bg-slate-400">
+	<header class=" flex h-auto w-full flex-row items-center justify-evenly bg-slate-50 p-0 pt-11">
 		<MenuDropdown />
 		<MonopolyMan />
 		<Die />
 	</header>
-	<div class=" grid h-auto w-auto grid-cols-3 grid-rows-2 bg-slate-500">
+	<div class=" flex h-auto w-auto min-w-[340px] flex-wrap justify-center gap-x-3">
 		<PlayerCard /><PlayerCard /><PlayerCard /><PlayerCard /><PlayerCard /><PlayerCard />
 	</div>
 </div>
