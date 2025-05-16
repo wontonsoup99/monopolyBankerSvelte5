@@ -7,36 +7,41 @@
 	import { CircleX } from 'lucide-svelte';
 	import { Users } from 'lucide-svelte';
 	import { Newspaper } from 'lucide-svelte';
-	import AddPlayerPopup from '$lib/components/popups/addPlayerPopup/addPlayerPopup.svelte';
-	import SetStartMoneyPopup from '$lib/components/popups/setStartMoneyPopup/setStartMoneyPopup.svelte';
-	import RestartGamePopup from '$lib/components/popups/restartGamePopup/restartGamePopup.svelte';
-	import RemovePlayerPopup from '$lib/components/popups/removePlayerPopup/removePlayerPopup.svelte';
+	import { createEventDispatcher, getContext } from 'svelte';
+	import type { Writable } from 'svelte/store';
+	import { toast } from 'svelte-sonner';
+	type MenuEvents = {
+		addPlayer: void;
+		setMoney: void;
+		restart: void;
+		removePlayer: void;
+	};
 
-	// State for popups
-	let showAddPlayer = false;
-	let showSetMoney = false;
-	let showRestart = false;
-	let showRemovePlayer = false;
+	const dispatch = createEventDispatcher<MenuEvents>();
+	const players = getContext<Writable<{ name: string; money: number; index: number }[]>>('players');
 
 	// Functions to handle menu item clicks
 	function handleAddPlayer() {
-		showAddPlayer = true;
+		if ($players.length < 6) {
+			dispatch('addPlayer');
+		} else if ($players.length >= 6) {
+			toast('Maximum number of players reached');
+		} else {
+			toast('Error');
+		}
 	}
 
 	function handleSetMoney() {
-		showSetMoney = true;
+		dispatch('setMoney');
 	}
 
 	function handleRestart() {
-		showRestart = true;
+		dispatch('restart');
 	}
 
 	function handleRemovePlayer() {
-		showRemovePlayer = true;
+		dispatch('removePlayer');
 	}
-
-	// Computed value to check if any popup is open
-	$: isAnyPopupOpen = showAddPlayer || showSetMoney || showRestart || showRemovePlayer;
 </script>
 
 <DropdownMenu.Root>
@@ -46,7 +51,13 @@
 	>
 	<DropdownMenu.Content class="ml-4">
 		<DropdownMenu.Group>
-			<DropdownMenu.Item onSelect={handleAddPlayer}><Users />Add Player</DropdownMenu.Item>
+			<DropdownMenu.Item 
+				onSelect={handleAddPlayer} 
+				disabled={$players.length >= 8}
+				class={$players.length >= 8 ? 'opacity-50 cursor-not-allowed' : ''}
+			>
+				<Users />Add Player {$players.length >= 8 ? '(Max Players)' : ''}
+			</DropdownMenu.Item>
 			<DropdownMenu.Item onSelect={handleSetMoney}><CreditCard />Set Starting Money</DropdownMenu.Item>
 			<DropdownMenu.Item onSelect={handleRestart}><RotateCw />Restart Game</DropdownMenu.Item>
 			<DropdownMenu.Item onSelect={handleRemovePlayer}><CircleX />Remove Player</DropdownMenu.Item>
@@ -56,23 +67,3 @@
 		</DropdownMenu.Group>
 	</DropdownMenu.Content>
 </DropdownMenu.Root>
-
-{#if isAnyPopupOpen}
-	<div class="fixed inset-0 bg-black/30 backdrop-blur-sm z-40" />
-{/if}
-
-{#if showAddPlayer}
-	<AddPlayerPopup on:close={() => (showAddPlayer = false)} />
-{/if}
-
-{#if showSetMoney}
-	<SetStartMoneyPopup on:close={() => (showSetMoney = false)} />
-{/if}
-
-{#if showRestart}
-	<RestartGamePopup on:close={() => (showRestart = false)} />
-{/if}
-
-{#if showRemovePlayer}
-	<RemovePlayerPopup on:close={() => (showRemovePlayer = false)} />
-{/if}

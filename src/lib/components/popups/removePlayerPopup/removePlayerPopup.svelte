@@ -2,23 +2,33 @@
 	import { Button } from '$lib/components/ui/button/index.js';
 	import * as Card from '$lib/components/ui/card/index.js';
 	import * as Select from '$lib/components/ui/select/index.js';
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, getContext } from 'svelte';
+	import type { Writable } from 'svelte/store';
 
 	const dispatch = createEventDispatcher();
+	const players = getContext<Writable<{ name: string; money: number; index: number }[]>>('players');
 
 	function handleClose() {
 		dispatch('close');
 	}
 
-	//temporary test array to test if dropdown functionality is working
-	let players = [
-		{ value: 'player1', label: 'Player One' },
-		{ value: 'player2', label: 'Player Two' },
-		{ value: 'player3', label: 'Player Three' }
-	];
+	function handleRemove() {
+		if (value) {
+			players.update(currentPlayers => {
+				const filteredPlayers = currentPlayers.filter(player => player.name !== value);
+				// Update indices after removal
+				return filteredPlayers.map((player, index) => ({
+					...player,
+					index
+				}));
+			});
+			handleClose();
+		}
+	}
+
 	let value = $state("");
 	const triggerContent = $derived(
-		players.find((f) => f.value === value)?.label ?? "Select a player"
+		$players.find((player) => player.name === value)?.name ?? "Select a player"
 	);
 </script>
 
@@ -35,8 +45,8 @@
 					<Select.Content>
 						<Select.Group>
 							<Select.GroupHeading>Select a Player</Select.GroupHeading>
-							{#each players as player (player.value)}
-								<Select.Item value={player.value} label={player.label}>{player.label}</Select.Item>
+							{#each $players as player (player.name)}
+								<Select.Item value={player.name} label={player.name}>{player.name}</Select.Item>
 							{/each}
 						</Select.Group>
 					</Select.Content>
@@ -44,13 +54,20 @@
 			</div>
 		</div>
 		<Card.Content class="flex-1 align-top justify-center p-0 text-center">
-			<h3>Are you sure you want to remove [player] from the game?</h3>
+			<h3>Are you sure you want to remove {value} from the game?</h3>
 			<br>
 			<h3>It is okay if they are winning!</h3>
 		</Card.Content>
 		<Card.Footer class="flex-1 align-top gap-2 p-0 pt-4">
 			<Button variant="outline" class="flex-1 justify-center p-4 text-base font-semibold pt-1 pb-1" on:click={handleClose}>Cancel</Button>
-			<Button variant="destructive" class="flex-1 justify-center p-4 text-base font-semibold pt-1 pb-1">Remove</Button>
+			<Button 
+				variant="destructive" 
+				class="flex-1 justify-center p-4 text-base font-semibold pt-1 pb-1"
+				on:click={handleRemove}
+				disabled={!value}
+			>
+				Remove
+			</Button>
 		</Card.Footer>
 	</Card.Root>
 </div>
